@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import me.rei_m.androidsample.activities.AsyncImageViewActivity;
 import me.rei_m.androidsample.activities.ListViewSampleActivity;
 
 
@@ -31,6 +32,16 @@ public class IndexActivity extends Activity {
                 activity.startActivity(new Intent(activity, ListViewSampleActivity.class));
             }
         });
+
+        Button openCustomImageView = (Button) findViewById(R.id.open_customImageView);
+        openCustomImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                activity.startActivity(new Intent(activity, AsyncImageViewActivity.class));
+            }
+        });
+
     }
 
     @Override

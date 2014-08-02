@@ -20,6 +20,10 @@
             android:name=".activities.ListViewSampleActivity"
             android:label="@string/title_activity_list_view_sample" >
         </activity>
+        <activity
+            android:name=".activities.AsyncImageViewActivity"
+            android:label="@string/title_activity_async_image_view" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
