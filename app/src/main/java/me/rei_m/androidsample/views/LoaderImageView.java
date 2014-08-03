@@ -30,6 +30,7 @@ public class LoaderImageView extends ImageView
         super(context, attrs, defStyle);
     }
 
+    // 表示する画像のURLをセット
     public void setUrl(String url){
         this.mUrl = url;
     }
