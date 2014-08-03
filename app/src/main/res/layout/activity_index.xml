@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,8 +6,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".IndexActivity">
-
+    tools:context=".IndexActivity"
+    android:orientation="vertical">
 
     <Button
         android:layout_width="match_parent"
@@ -16,4 +16,12 @@
         android:id="@+id/open_listView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-</RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="カスタムイメージビューを開く"
+        android:id="@+id/open_customImageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+</LinearLayout>
