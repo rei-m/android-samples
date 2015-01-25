@@ -1,4 +1,4 @@
-package me.rei_m.androidsample.utils;
+package me.rei_m.androidsample.util;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;

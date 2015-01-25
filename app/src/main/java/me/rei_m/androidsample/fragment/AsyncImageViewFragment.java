@@ -1,4 +1,4 @@
-package me.rei_m.androidsample.fragments;
+package me.rei_m.androidsample.fragment;
 
 import android.app.Activity;
 import android.content.Loader;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.rei_m.androidsample.R;
-import me.rei_m.androidsample.views.LoaderImageView;
+import me.rei_m.androidsample.view.LoaderImageView;
 
 public class AsyncImageViewFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package me.rei_m.androidsample.fragments;
+package me.rei_m.androidsample.fragment;
 
 import android.app.Activity;
 import android.app.LoaderManager;
@@ -20,8 +20,8 @@ import org.json.JSONObject;
 
 import me.rei_m.androidsample.R;
 
-import me.rei_m.androidsample.fragments.dummy.DummyContent;
-import me.rei_m.androidsample.utils.HttpAsyncLoader;
+import me.rei_m.androidsample.fragment.dummy.DummyContent;
+import me.rei_m.androidsample.util.HttpAsyncLoader;
 
 /**
  * A fragment representing a list of Items.

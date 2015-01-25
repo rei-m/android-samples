@@ -7,5 +7,6 @@
     <string name="title_activity_list_view_sample">ListViewSampleActivity</string>
     <string name="title_activity_async_image_view">AsyncImageViewActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_observer_sample">ObserverSampleActivity</string>
 
 </resources>

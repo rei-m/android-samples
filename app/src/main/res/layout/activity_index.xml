@@ -20,8 +20,17 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Observerパターンを開く"
+        android:id="@+id/open_observerSample"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="カスタムイメージビューを開く"
         android:id="@+id/open_customImageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
 </LinearLayout>

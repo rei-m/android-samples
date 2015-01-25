@@ -1,28 +1,23 @@
-package me.rei_m.androidsample.activities;
+package me.rei_m.androidsample.activitiy;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 
 import me.rei_m.androidsample.R;
-import me.rei_m.androidsample.fragments.ListViewSampleFragment;
+import me.rei_m.androidsample.fragment.AsyncImageViewFragment;
 
-public class ListViewSampleActivity extends Activity implements ListViewSampleFragment.OnFragmentInteractionListener {
+public class AsyncImageViewActivity extends Activity implements AsyncImageViewFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_view_sample);
+        setContentView(R.layout.activity_async_image_view);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, ListViewSampleFragment.newInstance())
+                    .add(R.id.container, AsyncImageViewFragment.newInstance())
                     .commit();
         }
     }
@@ -30,7 +25,7 @@ public class ListViewSampleActivity extends Activity implements ListViewSampleFr
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.list_view_sample, menu);
+        getMenuInflater().inflate(R.menu.async_image_view, menu);
         return true;
     }
 
@@ -46,9 +41,8 @@ public class ListViewSampleActivity extends Activity implements ListViewSampleFr
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
-    public void onFragmentInteraction(String id) {
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }
