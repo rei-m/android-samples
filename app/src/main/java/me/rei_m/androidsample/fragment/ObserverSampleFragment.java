@@ -83,8 +83,14 @@ public class ObserverSampleFragment extends Fragment
         listView.setAdapter(mAdapter);
         listView.setOnItemClickListener(this);
 
-        // AtndAPIモデルにリクエストを送る
-        mAtndApi.initLoader(view.getContext(), getLoaderManager());
+        // AtndAPIモデルから取得結果を取り出し、値が存在しない場合はリクエストを投げる
+        // 実際にはAPIのリクエストパラメータとかは変わるはずなので、実用を考えたらもうちょい厳密な判定になるはずだけど。
+        if(mAtndApi.getList() == null){
+            mAtndApi.fetchList(view.getContext(), getLoaderManager());
+        }else{
+            mAdapter.addAll(mAtndApi.getList());
+            mAdapter.notifyDataSetChanged();
+        }
 
         return view;
     }
