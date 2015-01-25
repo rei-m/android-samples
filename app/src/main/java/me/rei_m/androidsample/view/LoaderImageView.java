@@ -1,4 +1,4 @@
-package me.rei_m.androidsample.views;
+package me.rei_m.androidsample.view;
 
 import android.app.LoaderManager;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import me.rei_m.androidsample.utils.HttpAsyncImageLoader;
+import me.rei_m.androidsample.util.HttpAsyncImageLoader;
 
 /**
  * Created by rei_m on 2014/08/01.

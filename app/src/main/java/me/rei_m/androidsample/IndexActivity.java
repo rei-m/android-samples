@@ -8,8 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import me.rei_m.androidsample.activities.AsyncImageViewActivity;
-import me.rei_m.androidsample.activities.ListViewSampleActivity;
+import me.rei_m.androidsample.activitiy.AsyncImageViewActivity;
+import me.rei_m.androidsample.activitiy.ListViewSampleActivity;
+import me.rei_m.androidsample.activitiy.ObserverSampleActivity;
+import me.rei_m.androidsample.model.AtndApi;
+import me.rei_m.androidsample.model.ModelLocator;
 
 
 public class IndexActivity extends Activity {
@@ -18,6 +21,10 @@ public class IndexActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
+
+        // モデルの初期化
+        ModelLocator.getInstance().setAtndApi(AtndApi.createInstance());
+
     }
 
     @Override
@@ -28,8 +35,15 @@ public class IndexActivity extends Activity {
         openListView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
                 activity.startActivity(new Intent(activity, ListViewSampleActivity.class));
+            }
+        });
+
+        Button openObserverSample = (Button) findViewById(R.id.open_observerSample);
+        openObserverSample.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.startActivity(ObserverSampleActivity.createIntent(activity));
             }
         });
 
@@ -37,7 +51,6 @@ public class IndexActivity extends Activity {
         openCustomImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
                 activity.startActivity(new Intent(activity, AsyncImageViewActivity.class));
             }
         });

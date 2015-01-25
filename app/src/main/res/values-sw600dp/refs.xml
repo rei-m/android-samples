@@ -9,5 +9,6 @@
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     -->
     <item name="fragment_listviewsample" type="layout">@layout/fragment_listviewsample_grid</item>
+    <item name="fragment_item" type="layout">@layout/fragment_item_grid</item>
 
 </resources>
