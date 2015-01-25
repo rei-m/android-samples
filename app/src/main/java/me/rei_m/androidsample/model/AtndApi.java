@@ -25,12 +25,9 @@ import me.rei_m.androidsample.util.HttpAsyncLoader;
 public class AtndApi extends Observable
         implements LoaderManager.LoaderCallbacks<String>{
 
-
-
     public static AtndApi createInstance(){
-        AtndApi instance = new AtndApi();
-        instance.mList = new ArrayList<>();
-        return instance;
+
+        return new AtndApi();
     }
 
     private final int LOADER_ID = 1;
@@ -52,7 +49,8 @@ public class AtndApi extends Observable
      * @param context Context
      * @param lm LoaderManager
      */
-    public void initLoader(Context context, LoaderManager lm){
+    public void fetchList(Context context, LoaderManager lm){
+        mList = new ArrayList<>();
         mContext = context;
         mLoader = lm.initLoader(LOADER_ID, null, this);
         mLoader.forceLoad();
