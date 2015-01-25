@@ -9,6 +9,8 @@ public class ModelLocator {
 
     public static ModelLocator getInstance() {return instance;}
 
+    private ModelLocator() {}
+
     private AtndApi atndApi;
 
     public AtndApi getAtndApi() {
