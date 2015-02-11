@@ -11,7 +11,8 @@ import android.widget.Button;
 import me.rei_m.androidsample.activitiy.AsyncImageViewActivity;
 import me.rei_m.androidsample.activitiy.ListViewSampleActivity;
 import me.rei_m.androidsample.activitiy.ObserverSampleActivity;
-import me.rei_m.androidsample.model.AtndApi;
+import me.rei_m.androidsample.activitiy.PagerSampleActivity;
+import me.rei_m.androidsample.model.AtndApiModel;
 import me.rei_m.androidsample.model.ModelLocator;
 
 
@@ -21,17 +22,13 @@ public class IndexActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
-
-        // モデルの初期化
-        ModelLocator.getInstance().setAtndApi(AtndApi.createInstance());
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         final Activity activity = this;
-        Button openListView = (Button) findViewById(R.id.open_listView);
+        Button openListView = (Button) findViewById(R.id.open_list_view);
         openListView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +36,7 @@ public class IndexActivity extends Activity {
             }
         });
 
-        Button openObserverSample = (Button) findViewById(R.id.open_observerSample);
+        Button openObserverSample = (Button) findViewById(R.id.open_observer_sample);
         openObserverSample.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +44,15 @@ public class IndexActivity extends Activity {
             }
         });
 
-        Button openCustomImageView = (Button) findViewById(R.id.open_customImageView);
+        Button openPagerSample = (Button) findViewById(R.id.open_pager_sample);
+        openPagerSample.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.startActivity(PagerSampleActivity.createIntent(activity));
+            }
+        });
+
+        Button openCustomImageView = (Button) findViewById(R.id.open_custom_image_view);
         openCustomImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

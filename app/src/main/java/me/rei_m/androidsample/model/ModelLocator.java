@@ -11,13 +11,30 @@ public class ModelLocator {
 
     private ModelLocator() {}
 
-    private AtndApi atndApi;
+    private AtndApiModel atndApiModel;
 
-    public AtndApi getAtndApi() {
-        return atndApi;
+    private FollowerListModel followerListModel;
+
+    public AtndApiModel getAtndApiModel() {
+        return atndApiModel;
     }
 
-    public void setAtndApi(AtndApi atndApi) {
-        this.atndApi = atndApi;
+    public void setAtndApiModel(AtndApiModel atndApiModel) {
+        this.atndApiModel = atndApiModel;
+    }
+
+    public FollowerListModel getFollowerListModel() {
+        return followerListModel;
+    }
+
+    public void setFollowerListModel(FollowerListModel followerListModel) {
+        this.followerListModel = followerListModel;
+    }
+
+    public void initialize(){
+
+        // モデルの初期化
+        setAtndApiModel(AtndApiModel.createInstance());
+        setFollowerListModel(FollowerListModel.createInstance());
     }
 }

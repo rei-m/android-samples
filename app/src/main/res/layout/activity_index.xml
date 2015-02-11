@@ -13,24 +13,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="リストビューを開く"
-        android:id="@+id/open_listView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/open_list_view" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Observerパターンを開く"
-        android:id="@+id/open_observerSample"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/open_observer_sample" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Observerを活用したPagerViewを開く"
+        android:id="@+id/open_pager_sample" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="カスタムイメージビューを開く"
-        android:id="@+id/open_customImageView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/open_custom_image_view" />
 
 </LinearLayout>
