@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by rei_m on 2015/01/25.
  */
-public class AtndEvent implements Serializable {
+public class AtndEventEntity implements Serializable {
 
     private String id;
     private String title;

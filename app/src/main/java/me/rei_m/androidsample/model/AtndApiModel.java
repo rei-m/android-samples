@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import me.rei_m.androidsample.entity.AtndEvent;
+import me.rei_m.androidsample.entity.AtndEventEntity;
 import me.rei_m.androidsample.util.HttpAsyncLoader;
 
 /**
@@ -22,24 +22,25 @@ import me.rei_m.androidsample.util.HttpAsyncLoader;
  *
  * Created by rei_m on 2015/01/25.
  */
-public class AtndApi extends Observable
+public class AtndApiModel extends Observable
         implements LoaderManager.LoaderCallbacks<String>{
 
-    public static AtndApi createInstance(){
+    public static AtndApiModel createInstance(){
 
-        return new AtndApi();
+        return new AtndApiModel();
     }
 
     private final int LOADER_ID = 1;
 
-    private AtndApi(){}
+    private AtndApiModel(){}
 
     private Context mContext;
     private Loader mLoader;
+    private boolean mLoading;
 
-    private List<AtndEvent> mList;
+    private List<AtndEventEntity> mList;
 
-    public List<AtndEvent> getList(){
+    public List<AtndEventEntity> getList(){
         return mList;
     }
 
@@ -60,6 +61,9 @@ public class AtndApi extends Observable
     public Loader<String> onCreateLoader(int id, Bundle args) {
         HttpAsyncLoader loader = new HttpAsyncLoader(mContext,
                 "https://api.atnd.org/events/?keyword_or=google,cloud&format=json");
+
+        mLoading = true;
+
         loader.forceLoad();
         return loader;
     }
@@ -67,7 +71,7 @@ public class AtndApi extends Observable
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
 
-        if(loader.getId() == LOADER_ID){
+        if(loader.getId() == LOADER_ID && mLoading){
             try {
                 // APIの取得結果をEventオブジェクトに変換して格納する
                 JSONObject json = new JSONObject(data);
@@ -76,14 +80,16 @@ public class AtndApi extends Observable
                     JSONArray events = json.getJSONArray("events");
                     for(int i=0;i<evCnt;i++){
                         JSONObject ev = events.getJSONObject(i).getJSONObject("event");
-                        AtndEvent atndEvent = new AtndEvent();
-                        atndEvent.setId(ev.getString("event_id"));
-                        atndEvent.setTitle(ev.getString("title"));
-                        mList.add(atndEvent);
+                        AtndEventEntity atndEventEntity = new AtndEventEntity();
+                        atndEventEntity.setId(ev.getString("event_id"));
+                        atndEventEntity.setTitle(ev.getString("title"));
+                        mList.add(atndEventEntity);
                     }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
+            } finally {
+                mLoading = false;
             }
         }
 

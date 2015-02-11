@@ -15,8 +15,8 @@ import java.util.Observer;
 
 import me.rei_m.androidsample.R;
 
-import me.rei_m.androidsample.entity.AtndEvent;
-import me.rei_m.androidsample.model.AtndApi;
+import me.rei_m.androidsample.entity.AtndEventEntity;
+import me.rei_m.androidsample.model.AtndApiModel;
 import me.rei_m.androidsample.model.LoaderEvent;
 import me.rei_m.androidsample.model.ModelLocator;
 
@@ -24,12 +24,12 @@ public class ObserverSampleFragment extends Fragment
         implements AbsListView.OnItemClickListener, Observer{
 
     private OnFragmentInteractionListener mListener;
-    private ArrayAdapter<AtndEvent> mAdapter;
+    private ArrayAdapter<AtndEventEntity> mAdapter;
 
     /**
      * AtndAPIモデル
      */
-    private AtndApi mAtndApi;
+    private AtndApiModel mAtndApiModel;
 
     /**
      * ファクトリメソッド
@@ -69,8 +69,8 @@ public class ObserverSampleFragment extends Fragment
                 android.R.layout.simple_list_item_1, android.R.id.text1);
 
         // ModelLocatorからAtndAPIモデルを取得してフラグメントをObserverとして登録する
-        mAtndApi = ModelLocator.getInstance().getAtndApi();
-        mAtndApi.addObserver(this);
+        mAtndApiModel = ModelLocator.getInstance().getAtndApiModel();
+        mAtndApiModel.addObserver(this);
     }
 
     @Override
@@ -85,10 +85,10 @@ public class ObserverSampleFragment extends Fragment
 
         // AtndAPIモデルから取得結果を取り出し、値が存在しない場合はリクエストを投げる
         // 実際にはAPIのリクエストパラメータとかは変わるはずなので、実用を考えたらもうちょい厳密な判定になるはずだけど。
-        if(mAtndApi.getList() == null){
-            mAtndApi.fetchList(view.getContext(), getLoaderManager());
+        if(mAtndApiModel.getList() == null){
+            mAtndApiModel.fetchList(view.getContext(), getLoaderManager());
         }else{
-            mAdapter.addAll(mAtndApi.getList());
+            mAdapter.addAll(mAtndApiModel.getList());
             mAdapter.notifyDataSetChanged();
         }
 
@@ -100,14 +100,14 @@ public class ObserverSampleFragment extends Fragment
         super.onDestroy();
 
         // AtndAPIモデルからフラグメントをObserverから削除する
-        mAtndApi.deleteObserver(this);
+        mAtndApiModel.deleteObserver(this);
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
-        mAtndApi = null;
+        mAtndApiModel = null;
     }
 
 
@@ -124,8 +124,8 @@ public class ObserverSampleFragment extends Fragment
     public void update(Observable observable, Object data) {
         if (data instanceof LoaderEvent){
             // AtndAPIモデルから通知を受け取ったらモデルからAPIの取得結果を取り出して、ListViewにセットして、Viewを更新
-            AtndApi atndApi = (AtndApi) ((LoaderEvent) data).getSource();
-            mAdapter.addAll(atndApi.getList());
+            AtndApiModel atndApiModel = (AtndApiModel) ((LoaderEvent) data).getSource();
+            mAdapter.addAll(atndApiModel.getList());
             mAdapter.notifyDataSetChanged();
         }
     }
