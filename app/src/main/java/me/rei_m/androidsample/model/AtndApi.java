@@ -36,6 +36,7 @@ public class AtndApi extends Observable
 
     private Context mContext;
     private Loader mLoader;
+    private boolean mLoading;
 
     private List<AtndEvent> mList;
 
@@ -60,6 +61,9 @@ public class AtndApi extends Observable
     public Loader<String> onCreateLoader(int id, Bundle args) {
         HttpAsyncLoader loader = new HttpAsyncLoader(mContext,
                 "https://api.atnd.org/events/?keyword_or=google,cloud&format=json");
+
+        mLoading = true;
+
         loader.forceLoad();
         return loader;
     }
@@ -67,7 +71,7 @@ public class AtndApi extends Observable
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
 
-        if(loader.getId() == LOADER_ID){
+        if(loader.getId() == LOADER_ID && mLoading){
             try {
                 // APIの取得結果をEventオブジェクトに変換して格納する
                 JSONObject json = new JSONObject(data);
@@ -84,6 +88,8 @@ public class AtndApi extends Observable
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
+            } finally {
+                mLoading = false;
             }
         }
 
