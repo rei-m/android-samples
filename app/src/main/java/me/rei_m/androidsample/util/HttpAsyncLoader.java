@@ -36,9 +36,9 @@ public class HttpAsyncLoader extends AsyncTaskLoader<String> {
                     new ResponseHandler<String>() {
                         @Override
                         public String handleResponse(HttpResponse httpResponse) throws ClientProtocolException, IOException {
-                            if(HttpStatus.SC_OK == httpResponse.getStatusLine().getStatusCode()){
+                            if (HttpStatus.SC_OK == httpResponse.getStatusLine().getStatusCode()) {
                                 return EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
-                            }else{
+                            } else {
                                 return null;
                             }
 

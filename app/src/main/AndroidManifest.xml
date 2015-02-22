@@ -21,19 +21,19 @@
         </activity>
         <activity
             android:name=".activitiy.ListViewSampleActivity"
-            android:label="@string/title_activity_list_view_sample" >
-        </activity>
+            android:label="@string/title_activity_list_view_sample" />
         <activity
             android:name=".activitiy.AsyncImageViewActivity"
-            android:label="@string/title_activity_async_image_view" >
-        </activity>
+            android:label="@string/title_activity_async_image_view" />
         <activity
             android:name=".activitiy.ObserverSampleActivity"
-            android:label="@string/title_activity_observer_sample" >
-        </activity>
+            android:label="@string/title_activity_observer_sample" />
         <activity
             android:name=".activitiy.PagerSampleActivity"
-            android:label="@string/title_activity_pager_sample" >
+            android:label="@string/title_activity_pager_sample" />
+        <activity
+            android:name=".activitiy.SectionHeaderSampleActivity"
+            android:label="@string/title_activity_section_header_sample" >
         </activity>
     </application>
 

@@ -23,6 +23,7 @@ public class AsyncImageViewFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     public AsyncImageViewFragment() {
         // Required empty public constructor
     }

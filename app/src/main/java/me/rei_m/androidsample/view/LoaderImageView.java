@@ -14,7 +14,7 @@ import me.rei_m.androidsample.util.HttpAsyncImageLoader;
  * Created by rei_m on 2014/08/01.
  */
 public class LoaderImageView extends ImageView
-        implements LoaderManager.LoaderCallbacks<Bitmap>{
+        implements LoaderManager.LoaderCallbacks<Bitmap> {
 
     private String mUrl;
 
@@ -31,7 +31,7 @@ public class LoaderImageView extends ImageView
     }
 
     // 表示する画像のURLをセット
-    public void setUrl(String url){
+    public void setUrl(String url) {
         this.mUrl = url;
     }
 

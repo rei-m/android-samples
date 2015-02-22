@@ -19,20 +19,21 @@ import me.rei_m.androidsample.util.HttpAsyncLoader;
 /**
  * Atnd APIを管理するモデル.
  * APIにリクエストを飛ばし、取得した結果をリストで保持して、取得完了のイベントを通知する
- *
+ * <p/>
  * Created by rei_m on 2015/01/25.
  */
 public class AtndApiModel extends Observable
-        implements LoaderManager.LoaderCallbacks<String>{
+        implements LoaderManager.LoaderCallbacks<String> {
 
-    public static AtndApiModel createInstance(){
+    public static AtndApiModel createInstance() {
 
         return new AtndApiModel();
     }
 
     private final int LOADER_ID = 1;
 
-    private AtndApiModel(){}
+    private AtndApiModel() {
+    }
 
     private Context mContext;
     private Loader mLoader;
@@ -40,7 +41,7 @@ public class AtndApiModel extends Observable
 
     private List<AtndEventEntity> mList;
 
-    public List<AtndEventEntity> getList(){
+    public List<AtndEventEntity> getList() {
         return mList;
     }
 
@@ -48,9 +49,9 @@ public class AtndApiModel extends Observable
      * Loaderの初期化を行い、APIへリクエストを飛ばす
      *
      * @param context Context
-     * @param lm LoaderManager
+     * @param lm      LoaderManager
      */
-    public void fetchList(Context context, LoaderManager lm){
+    public void fetchList(Context context, LoaderManager lm) {
         mList = new ArrayList<>();
         mContext = context;
         mLoader = lm.initLoader(LOADER_ID, null, this);
@@ -71,14 +72,14 @@ public class AtndApiModel extends Observable
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
 
-        if(loader.getId() == LOADER_ID && mLoading){
+        if (loader.getId() == LOADER_ID && mLoading) {
             try {
                 // APIの取得結果をEventオブジェクトに変換して格納する
                 JSONObject json = new JSONObject(data);
                 int evCnt = json.getInt("results_returned");
-                if(evCnt > 0){
+                if (evCnt > 0) {
                     JSONArray events = json.getJSONArray("events");
-                    for(int i=0;i<evCnt;i++){
+                    for (int i = 0; i < evCnt; i++) {
                         JSONObject ev = events.getJSONObject(i).getJSONObject("event");
                         AtndEventEntity atndEventEntity = new AtndEventEntity();
                         atndEventEntity.setId(ev.getString("event_id"));

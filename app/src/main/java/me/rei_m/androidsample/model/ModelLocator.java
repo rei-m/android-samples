@@ -7,9 +7,12 @@ public class ModelLocator {
 
     private final static ModelLocator instance = new ModelLocator();
 
-    public static ModelLocator getInstance() {return instance;}
+    public static ModelLocator getInstance() {
+        return instance;
+    }
 
-    private ModelLocator() {}
+    private ModelLocator() {
+    }
 
     private AtndApiModel atndApiModel;
 
@@ -31,7 +34,7 @@ public class ModelLocator {
         this.followerListModel = followerListModel;
     }
 
-    public void initialize(){
+    public void initialize() {
 
         // モデルの初期化
         setAtndApiModel(AtndApiModel.createInstance());

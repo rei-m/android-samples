@@ -68,9 +68,9 @@ public class PagerItemFragment extends Fragment implements Observer, View.OnClic
         mButton.setOnClickListener(this);
 
         // 初期表示の設定
-        if(mFollowerListModel.hasFollower(mUser)){
+        if (mFollowerListModel.hasFollower(mUser)) {
             setFollowedStyle();
-        }else{
+        } else {
             setUnFollowedStyle();
         }
 
@@ -94,11 +94,11 @@ public class PagerItemFragment extends Fragment implements Observer, View.OnClic
 
     @Override
     public void update(Observable observable, Object data) {
-        if(data instanceof FollowerListModel.ChangeFollowerListEvent){
+        if (data instanceof FollowerListModel.ChangeFollowerListEvent) {
             FollowerListModel.ChangeFollowerListEvent event = (FollowerListModel.ChangeFollowerListEvent) data;
-            if(event.getIsAdded()){
+            if (event.getIsAdded()) {
                 setFollowedStyle();
-            }else{
+            } else {
                 setUnFollowedStyle();
             }
         }
@@ -107,24 +107,24 @@ public class PagerItemFragment extends Fragment implements Observer, View.OnClic
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.button_pager_item:
                 // フォロアーリストを確認して、追加済であれば削除、未追加であれば追加
-                if(mFollowerListModel.hasFollower(mUser)){
+                if (mFollowerListModel.hasFollower(mUser)) {
                     mFollowerListModel.removeFollower(mUser);
-                }else{
+                } else {
                     mFollowerListModel.addFollower(mUser);
                 }
                 break;
         }
     }
 
-    private void setFollowedStyle(){
+    private void setFollowedStyle() {
         mButton.setText(mUser.getName() + "をふぉろーしてるよ");
         mTextView.setBackgroundColor(getResources().getColor(R.color.active));
     }
 
-    private void setUnFollowedStyle(){
+    private void setUnFollowedStyle() {
         mButton.setText(mUser.getName() + "はまだふぉろーしてないよ");
         mTextView.setBackground(null);
     }

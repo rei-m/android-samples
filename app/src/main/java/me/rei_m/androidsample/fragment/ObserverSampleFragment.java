@@ -21,7 +21,7 @@ import me.rei_m.androidsample.model.LoaderEvent;
 import me.rei_m.androidsample.model.ModelLocator;
 
 public class ObserverSampleFragment extends Fragment
-        implements AbsListView.OnItemClickListener, Observer{
+        implements AbsListView.OnItemClickListener, Observer {
 
     private OnFragmentInteractionListener mListener;
     private ArrayAdapter<AtndEventEntity> mAdapter;
@@ -85,9 +85,9 @@ public class ObserverSampleFragment extends Fragment
 
         // AtndAPIモデルから取得結果を取り出し、値が存在しない場合はリクエストを投げる
         // 実際にはAPIのリクエストパラメータとかは変わるはずなので、実用を考えたらもうちょい厳密な判定になるはずだけど。
-        if(mAtndApiModel.getList() == null){
+        if (mAtndApiModel.getList() == null) {
             mAtndApiModel.fetchList(view.getContext(), getLoaderManager());
-        }else{
+        } else {
             mAdapter.addAll(mAtndApiModel.getList());
             mAdapter.notifyDataSetChanged();
         }
@@ -122,7 +122,7 @@ public class ObserverSampleFragment extends Fragment
 
     @Override
     public void update(Observable observable, Object data) {
-        if (data instanceof LoaderEvent){
+        if (data instanceof LoaderEvent) {
             // AtndAPIモデルから通知を受け取ったらモデルからAPIの取得結果を取り出して、ListViewにセットして、Viewを更新
             AtndApiModel atndApiModel = (AtndApiModel) ((LoaderEvent) data).getSource();
             mAdapter.addAll(atndApiModel.getList());

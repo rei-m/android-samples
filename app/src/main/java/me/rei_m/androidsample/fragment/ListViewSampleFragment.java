@@ -25,10 +25,10 @@ import me.rei_m.androidsample.util.HttpAsyncLoader;
 
 /**
  * A fragment representing a list of Items.
- * <p />
+ * <p/>
  * Large screen devices (such as tablets) are supported by replacing the ListView
  * with a GridView.
- * <p />
+ * <p/>
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
@@ -100,7 +100,7 @@ public class ListViewSampleFragment extends Fragment implements AbsListView.OnIt
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                + " must implement OnFragmentInteractionListener");
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -134,15 +134,15 @@ public class ListViewSampleFragment extends Fragment implements AbsListView.OnIt
     }
 
     /**
-    * This interface must be implemented by activities that contain this
-    * fragment to allow an interaction in this fragment to be communicated
-    * to the activity and potentially other fragments contained in that
-    * activity.
-    * <p>
-    * See the Android Training lesson <a href=
-    * "http://developer.android.com/training/basics/fragments/communicating.html"
-    * >Communicating with Other Fragments</a> for more information.
-    */
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p/>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(String id);
@@ -174,14 +174,14 @@ public class ListViewSampleFragment extends Fragment implements AbsListView.OnIt
     public void onLoadFinished(Loader<String> loader, String data) {
 
         // ローダーの通信完了後の処理を実装
-        if(loader.getId() == 0){
+        if (loader.getId() == 0) {
             try {
                 // 受け取ったイベント情報を解析
                 JSONObject json = new JSONObject(data);
                 int evCnt = json.getInt("results_returned");
-                if(evCnt > 0){
+                if (evCnt > 0) {
                     JSONArray events = json.getJSONArray("events");
-                    for(int i=0;i<evCnt;i++){
+                    for (int i = 0; i < evCnt; i++) {
                         JSONObject ev = events.getJSONObject(i).getJSONObject("event");
 
                         // イベント情報をセットしたダミークラスのオブジェクトを作り、アダプターに追加する。
